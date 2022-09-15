@@ -15,7 +15,7 @@ const Customer = mongoose.Schema(
       type: String,
       required: true,
     },
-    order : Order
+    order : Order.Order
   },
   {
     timestamps: true,
