@@ -1,3 +1,4 @@
+import Order from './Order';
 const mongoose = require('mongoose');
 
 const Customer = mongoose.Schema(
@@ -14,10 +15,7 @@ const Customer = mongoose.Schema(
       type: String,
       required: true,
     },
-    orderID:{
-        type: Number,
-        required: true,
-    }
+    order : Order
   },
   {
     timestamps: true,
