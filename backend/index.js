@@ -1,33 +1,23 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('express')
+const MongoDBConnect = require('./config/db')
+const PORT = process.env.PORT || 5000
 const dotenv = require('dotenv');
-
+require("dotenv").config({ path: "./config/.env" });
+const cors = require('cors');
+const bodyParser = require('body-parser');
 // ----------------------
-//THIS LINE DICTATES WHAT DB YOU USE!
-// FOR TESTING -> path: './config/testconfig.env'  // FOR DEV DB -> path: './config/config.env'
-const configPath = './config/testconfig.env';
-dotenv.config({ path: configPath }); 
-// ----------------------
+// Database connect
+MongoDBConnect()
 
-const port = process.env.PORT;
-const movieRoutes = require('./routes/movieRoutes');
-const formRoutes = require('./routes/contactFormRoutes');
-const bookingRoutes = require('./routes/bookingRoutes');
-const discussionRoutes = require('./controller/discussionController');
-const connectDB = require('./config/db');
+// App initialise
+const app = express()
 
-connectDB();
-const app = express();
+
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use('/api/movies', movieRoutes);
-app.use('/api/contact', formRoutes);
-app.use('/api/discussions', discussionRoutes);
-app.use('/api/booking', bookingRoutes);
-const server = app.listen(port, () => console.info(`Server started on port ${port}`));
-
-(configPath === './config/config.env') && console.warn("-- WARNING: Running development environment. NOT SAFE FOR TESTING. --");
+const server = app.listen(PORT, () => console.log(`Server port: ${PORT}`))
 
 module.exports = server;
