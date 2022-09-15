@@ -14,10 +14,13 @@ const getCustomerByID = asyncHandler(async(req,res) => {
 })
 
 const postCustomer = asyncHandler(async (req, res) => {
-  const customers = new Customer(req.body)
-  const created = await customers.save
-  res.status(201).json(created);
+  const customer = await Customer.create({
+    name: req.body.name,
+    address: req.body.address,
+    email: req.body.email
   });
+  res.status(201).json(customer);
+});
 
   const updateCustomer = asyncHandler(async (req, res) => {
     const customer = await Customer.findById(req.params.id);
