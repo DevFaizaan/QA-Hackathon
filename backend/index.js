@@ -33,6 +33,7 @@ app.use('/api/driver', driverRoutes);
 app.use('/api/order', orderRoutes)
 const server = app.listen(port, () => console.info(`Server started on port ${port}`));
 
-(configPath === './config/config.env') && console.warn("-- WARNING: Running development environment. NOT SAFE FOR TESTING. --");
+//sdsdsd
+// (configPath === './config/config.env') && console.warn("-- WARNING: Running development environment. NOT SAFE FOR TESTING. --");
 
 module.exports = server;

@@ -12,14 +12,24 @@ const Items = mongoose.Schema({
 
 })
 
-const Order = mongoose.Schema(
-  {
-    items : Items
-  },
-  {
-    timestamps: true,
-  }
-);
+const Order = mongoose.Schema({
+
+    items: Items,
+      address1: {
+      type: String,
+      required: true,
+    },
+    address2: {
+      type: String,
+    },
+    address3: {
+      type: String,
+    },
+    city: {
+      type: String,
+    }
+
+  });
 
 
 module.exports = mongoose.model('order', Order);
