@@ -16,8 +16,10 @@ const getOrderByID = asyncHandler(async(req,res) => {
 const postOrder = asyncHandler(async (req, res) => {
     const order = new Order(req.body)
     const created = await order.save
-    res.status(201).json(order);
+    res.status(201).json(created);
   });
+
+
 
   const updateOrder = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);

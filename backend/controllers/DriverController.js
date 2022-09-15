@@ -14,13 +14,9 @@ const getDriverByID = asyncHandler(async(req,res) => {
 })
 
 const postDriver = asyncHandler(async (req, res) => {
-    const driver = await Driver.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    address: req.body.address,
-    email: req.body.email
-    });
-    res.status(201).json(driver);
+  const driver = new Driver(req.body)
+  const created = await driver.save
+  res.status(201).json(created);
   });
 
   const updateDriver = asyncHandler(async (req, res) => {

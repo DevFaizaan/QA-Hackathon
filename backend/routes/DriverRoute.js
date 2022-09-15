@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getDriver,
+  getAllDrivers,
   getDriverByID,
-  setDriver,
+  postDriver,
   updateDriver,
   deleteDriver,
-} = require('../controller/DriverController');
+} = require('../controllers/DriverController');
 
-router.route('/').get(getDriver).post(setDriver);
+router.route('/').get(getAllDrivers).post(postDriver);
 router
   .route('/:id')
   .delete(deleteDriver)

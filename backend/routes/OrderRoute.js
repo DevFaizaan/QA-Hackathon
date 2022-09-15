@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getOrder,
+  getAllOrders,
   getOrderByID,
-  setOrder,
+  postOrder,
   updateOrder,
   deleteOrder,
-} = require('../controller/orderController');
+} = require('../controllers/OrderController');
 
-router.route('/').get(getOrder).post(setOrder);
+router.route('/').get(getAllOrders).post(postOrder);
 router
   .route('/:id')
   .delete(deleteOrder)
