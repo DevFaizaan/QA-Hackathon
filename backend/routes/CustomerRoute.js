@@ -2,18 +2,17 @@ const express = require('express');
 const router = express.Router();
 const {
   getCustomer,
-  getCustomeByID,
-  setCustome,
+  getCustomerByID,
+  setCustomer,
   updateCustomer,
   deleteCustomer,
-} = require('../controller/bookingController');
+} = require('../controller/customerController');
 
-router.route('/').get(getBookings).post(setBooking);
+router.route('/').get(getCustomer).post(setCustomer);
 router
   .route('/:id')
-  .delete(deleteBooking)
-  .put(updateBooking)
-  .get(getBookingsByID);
-router.route('/:movie/:name').get(getByMovieAndName);
+  .delete(deleteCustomer)
+  .put(updateCustomer)
+  .get(getCustomerByID);
 
 module.exports = router;
