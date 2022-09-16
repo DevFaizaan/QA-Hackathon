@@ -37,9 +37,8 @@ function ManagerPage() {
                    <br/>
                </li> )
                )
-       }
+    }
    
-
     const getDrivers = async() => {
         try {
             const res = await axios.get("http://localhost:5000/api/driver");
@@ -58,7 +57,6 @@ function ManagerPage() {
         };
     }
 
-    console.log(orders)
     useEffect(() => {
         getDrivers();
         getOrders();
@@ -75,7 +73,7 @@ function ManagerPage() {
             </ul>
             <ul>
                 <h2>Orders</h2>
-                {}
+                {mappedOrders()}
             </ul>
         </>
     );
