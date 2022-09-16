@@ -9,8 +9,9 @@ const getAllCustomers = asyncHandler(async(req, res) => {
 
 
 const getCustomerByID = asyncHandler(async(req,res) => {
-    const customers = await Customer.findById();
-    res.status(200).json(customers)
+
+    const orders = await Order.findById();
+    res.status(200).json(orders)
 })
 
 const postCustomer = asyncHandler(async (req, res) => {
@@ -26,6 +27,7 @@ const postCustomer = asyncHandler(async (req, res) => {
     const customer = await Customer.findById(req.params.id);
     if (!customer) {
       res.status(400).json({ message: `Customer not found` });
+
     }
     const updateSchema = await Customer.findByIdAndUpdate(
       req.params.id,
