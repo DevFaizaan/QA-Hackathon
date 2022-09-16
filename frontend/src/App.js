@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import HomePage from './components/routes/HomePage';
 import ProfilePage from './components/routes/ProfilePage';
-import DriverPage from './components/routes/DriverPage';
+import DriverPage from './components/routes/DriverPage'
 import ManagerPage from './components/routes/ManagerPage';
 import NotFound from './components/routes/NotFound';
 

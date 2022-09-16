@@ -9,7 +9,7 @@ const getAllDrivers = asyncHandler(async(req, res) => {
 
 
 const getDriverByID = asyncHandler(async(req,res) => {
-    const drivers = await Driver.findById();
+    const drivers = await Driver.findById(req.params.id);
     res.status(200).json(drivers)
 })
 

@@ -1,21 +1,27 @@
 const mongoose = require('mongoose');
 
 
-const Items = mongoose.Schema({
-  itemName: {
-    type: String,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-  }
+// const Items = mongoose.Schema({
+//   itemName: {
+//     type: String,
+//     required: true,
+//   },
+//   quantity: {
+//     type: Number,
+//   }
 
-})
+// })
 
 const Order = mongoose.Schema({
 
-    items: Items,
-      address1: {
+    itemName: {
+      type: String,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+    },
+    address1: {
       type: String,
       required: true,
     },
@@ -29,7 +35,7 @@ const Order = mongoose.Schema({
       type: String,
     }
 
-  });
+});
 
 
 module.exports = mongoose.model('order', Order);
