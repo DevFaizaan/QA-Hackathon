@@ -1,34 +1,35 @@
 const asyncHandler = require('express-async-handler')
-const Order = require('../models/Order')
+const Customer = require('../models/Customer')
 
 
 const getAllCustomers = asyncHandler(async(req, res) => {
-    const orders = await Order.find();
-    res.status(200).json(orders);
+    const customers = await Customer.find();
+    res.status(200).json(customers);
   });
 
 
 const getCustomerByID = asyncHandler(async(req,res) => {
+
     const orders = await Order.findById();
     res.status(200).json(orders)
 })
 
 const postCustomer = asyncHandler(async (req, res) => {
-    const order = await Order.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+  const customer = await Customer.create({
+    name: req.body.name,
     address: req.body.address,
     email: req.body.email
-    });
-    res.status(201).json(order);
   });
+  res.status(201).json(customer);
+});
 
   const updateCustomer = asyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params.id);
-    if (!order) {
-      res.status(400).json({ message: `Order not found` });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer) {
+      res.status(400).json({ message: `Customer not found` });
+
     }
-    const updateSchema = await Order.findByIdAndUpdate(
+    const updateSchema = await Customer.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -39,12 +40,12 @@ const postCustomer = asyncHandler(async (req, res) => {
   });
 
   const deleteCustomer = asyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params.id);
-    if (!order) {
-      res.status(400).json({ message: `Order not found` });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer) {
+      res.status(400).json({ message: `Customernot found` });
     }
   
-    await order.remove();
+    await customer.remove();
   
     res.status(204).json({ id: req.params.id });
   });

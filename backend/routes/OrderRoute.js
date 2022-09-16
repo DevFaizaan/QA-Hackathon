@@ -6,7 +6,7 @@ const {
   postOrder,
   updateOrder,
   deleteOrder,
-} = require('../controllers/orderController');
+} = require('../controllers/OrderController');
 
 router.route('/').get(getAllOrders).post(postOrder);
 router

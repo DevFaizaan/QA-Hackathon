@@ -23,4 +23,4 @@ const Driver = mongoose.Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model('customer', Driver);
+module.exports = mongoose.model('driver', Driver);
